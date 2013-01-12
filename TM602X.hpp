@@ -5,19 +5,22 @@
 #include <array>
 #include <string>
 
+#define BOOST_DATE_TIME_NO_LIB
+#define DATE_TIME_NO_DEFAULT_CONSTRUCTOR
+#include "date_time/include/boost/date_time/gregorian/gregorian_types.hpp"
+
 namespace TM602X {
 
-template<typename T, std::size_t C, std::size_t R>
-using Table = std::array<std::array<T, C>, R>;
+template<std::size_t C, std::size_t R>
+using Table = std::array<std::array<int, C>, R>;
 
-template<typename T, std::size_t N>
-using Alphabet = std::array<T, N>;
+template<std::size_t N>
+using Alphabet = std::array<char, N>;
 
-template<typename T, std::size_t N>
-using Round = std::array<T, N>;
+template<std::size_t N>
+using Round = std::array<int, N>;
 
-
-constexpr Table<int, 5, 7> firstTable = {{
+constexpr Table<5, 7> firstTable = {{
   {{15, 15, 24, 20, 24}},
   {{13, 14, 27, 32, 10}},
   {{29, 14, 32, 29, 24}},
@@ -27,7 +30,7 @@ constexpr Table<int, 5, 7> firstTable = {{
   {{14, 22, 24, 17, 13}},
 }};
 
-constexpr Table<int, 10, 6> secondTable = {{
+constexpr Table<10, 6> secondTable = {{
   {{0, 1, 2, 9, 3, 4, 5, 6, 7, 8}},
   {{1, 4, 3, 9, 0, 7, 8, 2, 5, 6}},
   {{7, 2, 8, 9, 4, 1, 6, 0, 3, 5}},
@@ -36,41 +39,33 @@ constexpr Table<int, 10, 6> secondTable = {{
   {{5, 6, 1, 9, 8, 0, 4, 3, 2, 7}},
 }};
 
-constexpr Alphabet<char, 36> alphaTable = {{
+constexpr Alphabet<36> alphaTable = {{
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
   'U', 'V', 'W', 'X', 'Y', 'Z',
 }};
 
-
-// TODO: generate date automatically
-struct Date {
-  int year;       // last two digits
-  int month;      // Jan. = 1
-  int dayOfMonth; // day of month
-  int dayOfWeek;  // Mon. = 0
-};
-
-
-class KeyGenerator {
+class KeyGenerator final {
   public:
-    // change default seed; key is valid for date
-    explicit KeyGenerator(Date date_, std::string seed_)
-      : seed(seed_), date(date_) { }
+    // uses the default seed; key is valid for today
+    explicit KeyGenerator()
+      : KeyGenerator(boost::gregorian::day_clock::local_day()) { }
 
-    // use the default seed; key is valid for date
-    explicit KeyGenerator(Date date_)
+    // uses the default seed; key is valid for date
+    explicit KeyGenerator(boost::gregorian::date date_)
       : KeyGenerator(date_, "MPSJKMDHAI") { }
 
-    // TODO: default constructor with date = today
+    // uses specific seed; key is valid for date
+    explicit KeyGenerator(boost::gregorian::date date_, std::string seed_)
+      : seed(seed_), date(date_) { }
 
     // generates the key based on seed and date
-    std::string operator()();
+    std::string operator()() const;
 
   private:
     std::string seed;
-    Date date;
+    boost::gregorian::date date;
 };
 
 }
