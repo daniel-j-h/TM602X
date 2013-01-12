@@ -11,7 +11,7 @@ std::string KeyGenerator::operator()() {
   // round 1
   Round<int, 8> firstRound;
 
-  for(auto i = 0;i <= 4; ++i)
+  for(auto i = 0; i <= 4; ++i)
     firstRound[i] = firstTable[date.dayOfWeek][i];
 
   firstRound[5] = date.dayOfMonth;
@@ -35,7 +35,7 @@ std::string KeyGenerator::operator()() {
   for(auto i = 0; i <= 7; ++i)
     thirdRound[i] = (firstRound[i] + secondRound[i]) % 36;
 
-  thirdRound[8] = std::accumulate(thirdRound.cbegin(), thirdRound.cbegin() + 8 , 0);
+  thirdRound[8] = std::accumulate(thirdRound.cbegin(), thirdRound.cbegin() + 8 , 0) % 36;
   thirdRound[9] = std::round(std::pow(thirdRound[8] % 6, 2));
 
   // round 4
@@ -54,8 +54,8 @@ std::string KeyGenerator::operator()() {
   std::string key;
 
   std::for_each(fifthRound.cbegin(), fifthRound.cend(), [&key](const int v){
-    key += alphaTable[v];}
-  );
+    key += alphaTable[v];
+  });
 
   return key;
 }
