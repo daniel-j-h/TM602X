@@ -19,7 +19,7 @@ using Alphabet = std::array<char, N>;
 template<std::size_t N>
 using Round = std::array<int, N>;
 
-constexpr Table<5, 7> firstTable = {{
+const Table<5, 7> firstTable = {{
   {{15, 15, 24, 20, 24}},
   {{13, 14, 27, 32, 10}},
   {{29, 14, 32, 29, 24}},
@@ -29,7 +29,7 @@ constexpr Table<5, 7> firstTable = {{
   {{14, 22, 24, 17, 13}},
 }};
 
-constexpr Table<10, 6> secondTable = {{
+const Table<10, 6> secondTable = {{
   {{0, 1, 2, 9, 3, 4, 5, 6, 7, 8}},
   {{1, 4, 3, 9, 0, 7, 8, 2, 5, 6}},
   {{7, 2, 8, 9, 4, 1, 6, 0, 3, 5}},
@@ -38,7 +38,7 @@ constexpr Table<10, 6> secondTable = {{
   {{5, 6, 1, 9, 8, 0, 4, 3, 2, 7}},
 }};
 
-constexpr Alphabet<36> alphaTable = {{
+const Alphabet<36> alphaTable = {{
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',

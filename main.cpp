@@ -75,9 +75,7 @@ int main(int argc, char* argv[]) {
   }
 
   // generate keys for all given dates
-  day_iterator it{start};
-
-  for(; it <= end; ++it) {
+  for(day_iterator it{start}; it <= end; ++it) {
     KeyGenerator g{*it};
 
     // $1 = ISO 8601, $2 = key
