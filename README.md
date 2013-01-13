@@ -1,5 +1,6 @@
 TM602X
 ======
+[![Build Status](https://secure.travis-ci.org/daniel-j-h/TM602X.png)](http://travis-ci.org/daniel-j-h/TM602X)
 
 
 Description
