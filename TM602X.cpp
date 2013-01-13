@@ -44,7 +44,7 @@ std::string KeyGenerator::operator()() const {
   for(auto i = 0; i <= 7; ++i)
     thirdRound[i] = (firstRound[i] + secondRound[i]) % 36;
 
-  thirdRound[8] = std::accumulate(thirdRound.cbegin(), thirdRound.cbegin() + 8 , 0) % 36;
+  thirdRound[8] = std::accumulate(thirdRound.cbegin(), thirdRound.cbegin() + 8, 0) % 36;
   thirdRound[9] = std::round(std::pow(thirdRound[8] % 6, 2));
 
   // round 4
