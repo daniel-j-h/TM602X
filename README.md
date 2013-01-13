@@ -1,21 +1,25 @@
 TM602X
 ======
-[![Build Status](https://secure.travis-ci.org/daniel-j-h/TM602X.png)](http://travis-ci.org/daniel-j-h/TM602X)
 
 
 Description
 -----------
 
-Simple library / application to generate the login "password of the day" for the Arris TM602X telephony modem family.
+Simple application to generate the login "password of the day" for the Arris TM602X telephony modem family.
+
+
+Dependencies
+------------
+
+Boost Date Time library for specific date handling.
 
 
 Building
 --------
 
-Requires a decent C++11 compiler (e.g. clang-3.1 with libc++).  
-Uses the Boost Date Time library (headers only) for specific date handling, so you have to initialize the submodule:
+Requires a decent C++11 compiler (e.g. clang-3.1 with libc++, or g++-4.7 with stdlibc++).  
 
-    git clone --recursive git://github.com/daniel-j-h/TM602X.git
+    export CXX="g++-4.7" CXXFLAGS="-std=c++11"
     make
 
 
@@ -41,7 +45,7 @@ For reasons of simple environment integration, the output is formatted as:
 If you want to generate passwords for other days, you have two simple options:
 
 * pass a specific boost::gregorian::date to the constructor
-* build the Boost Date Time library and use boost::gregorian::from_string() to parse your input
+* use boost::gregorian::from_string() to parse your input
 
 
 Notes

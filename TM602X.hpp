@@ -7,7 +7,7 @@
 
 #define BOOST_DATE_TIME_NO_LIB
 #define DATE_TIME_NO_DEFAULT_CONSTRUCTOR
-#include "date_time/include/boost/date_time/gregorian/gregorian_types.hpp"
+#include <boost/date_time/gregorian/gregorian_types.hpp>
 
 namespace TM602X {
 

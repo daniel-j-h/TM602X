@@ -1,5 +1,0 @@
-language: cpp
-compiler: clang
-env: CXXFLAGS="-std=c++11 -Idate_time/include/"
-before_install: git submodule update --init
-script: make
