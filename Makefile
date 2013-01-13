@@ -1,8 +1,8 @@
 # TM602X password of the day generator.
 # Requires decent C++11 compiler support.
 # Feel free to adapt this Makefile to your needs.
-CXX        = clang++
-CXXFLAGS   = -std=c++11 -stdlib=libc++ -fcatch-undefined-behavior -Wall -Wextra -O2
+CXX        ?= clang++
+CXXFLAGS   ?= -std=c++11 -stdlib=libc++ -fcatch-undefined-behavior -Wall -Wextra -O2
 TARGET     = tm602x-key
 
 

@@ -4,3 +4,4 @@
 !*.cpp
 !*.hpp
 !date_time/
+!.travis.yml

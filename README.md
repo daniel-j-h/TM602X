@@ -25,13 +25,13 @@ For the password of the day, just run:
 
     ./tm602x-key
 
-Generate keys for a specific period:
+Generate keys for a specific time period:
 
     ./tm602x-key -week
     ./tm602x-key -month
     ./tm602x-key -year
 
-For reasons of simple environment integration, the output is for formatted as:
+For reasons of simple environment integration, the output is formatted as:
 
     <ISO 8601> <key>
 
