@@ -36,16 +36,15 @@ Generate keys for a specific time period:
     ./tm602x-key -month
     ./tm602x-key -year
 
+If you want to generate passwords for a specific day, pass in the delimited date:
+
+    ./tm602x-key -day 2013-01-13
+
 For reasons of simple environment integration, the output is formatted as:
 
     <ISO 8601> <key>
 
-    2013-1-13 XXXXXXXXXX
-
-If you want to generate passwords for other days, you have two simple options:
-
-* pass a specific boost::gregorian::date to the constructor
-* use boost::gregorian::from_string() to parse your input
+    2013-01-13 XXXXXXXXXX
 
 
 Notes

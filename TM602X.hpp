@@ -5,7 +5,6 @@
 #include <array>
 #include <string>
 
-#define BOOST_DATE_TIME_NO_LIB
 #define DATE_TIME_NO_DEFAULT_CONSTRUCTOR
 #include <boost/date_time/gregorian/gregorian_types.hpp>
 
