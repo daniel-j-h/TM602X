@@ -11,7 +11,8 @@ Simple application to generate the login "password of the day" for the Arris TM6
 Dependencies
 ------------
 
-Boost Date Time library for specific date handling.
+* Boost Date Time library for specific date handling.
+* Boost Test library for unit tests.
 
 
 Building

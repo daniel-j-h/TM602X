@@ -7,6 +7,32 @@
 
 namespace TM602X {
 
+static const Table<7, 5> firstTable = {{
+  {{15, 15, 24, 20, 24}},
+  {{13, 14, 27, 32, 10}},
+  {{29, 14, 32, 29, 24}},
+  {{23, 32, 24, 29, 29}},
+  {{14, 29, 10, 21, 29}},
+  {{34, 27, 16, 23, 30}},
+  {{14, 22, 24, 17, 13}},
+}};
+
+static const Table<6, 10> secondTable = {{
+  {{0, 1, 2, 9, 3, 4, 5, 6, 7, 8}},
+  {{1, 4, 3, 9, 0, 7, 8, 2, 5, 6}},
+  {{7, 2, 8, 9, 4, 1, 6, 0, 3, 5}},
+  {{6, 3, 5, 9, 1, 8, 2, 7, 4, 0}},
+  {{4, 7, 0, 9, 5, 2, 3, 1, 8, 6}},
+  {{5, 6, 1, 9, 8, 0, 4, 3, 2, 7}},
+}};
+
+static const Alphabet<36> alphaTable = {{
+  '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+  'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+  'U', 'V', 'W', 'X', 'Y', 'Z',
+}};
+
 std::string KeyGenerator::operator()() const {
   // year           last two digits
   // month          Jan = 1
@@ -62,9 +88,8 @@ std::string KeyGenerator::operator()() const {
   // finalize
   std::string key;
 
-  std::for_each(fifthRound.cbegin(), fifthRound.cend(), [&key](const int v){
+  for(const auto v : fifthRound)
     key += alphaTable[v];
-  });
 
   return key;
 }
