@@ -20,27 +20,14 @@ template<std::size_t N>
 using Round = std::array<int, N>;
 
 
-class KeyGenerator final {
-  public:
-    // uses the default seed; key is valid for today
-    explicit KeyGenerator()
-      : KeyGenerator(boost::gregorian::day_clock::local_day()) { }
+// uses the default seed; key is valid for today
+std::string generateKey();
 
-    // uses the default seed; key is valid for date
-    explicit KeyGenerator(boost::gregorian::date date_)
-      : KeyGenerator(date_, "MPSJKMDHAI") { }
+// uses the default seed; key is valid for date
+std::string generateKey(boost::gregorian::date);
 
-    // uses specific seed; key is valid for date
-    explicit KeyGenerator(boost::gregorian::date date_, std::string seed_)
-      : seed(seed_), date(date_) { }
-
-    // generates the key based on seed and date
-    std::string operator()() const;
-
-  private:
-    std::string seed;
-    boost::gregorian::date date;
-};
+// uses specific seed; key is valid for date
+std::string generateKey(boost::gregorian::date, std::string);
 
 }
 

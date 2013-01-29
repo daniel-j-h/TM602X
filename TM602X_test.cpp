@@ -1,4 +1,5 @@
 #include <string>
+#include <map>
 
 #define DATE_TIME_NO_DEFAULT_CONSTRUCTOR
 #include <boost/date_time/gregorian/gregorian.hpp>
@@ -11,8 +12,6 @@
 
 using std::string;
 using std::map;
-
-using TM602X::KeyGenerator;
 
 using boost::gregorian::date;
 using boost::gregorian::Jan;
@@ -27,7 +26,7 @@ BOOST_AUTO_TEST_CASE(test_working) {
   };
 
   for(auto p : kv)
-    BOOST_CHECK_EQUAL(KeyGenerator{p.first}(), p.second);
+    BOOST_CHECK_EQUAL(TM602X::generateKey(p.first), p.second);
 }
 
 BOOST_AUTO_TEST_CASE(test_past) {
@@ -38,7 +37,7 @@ BOOST_AUTO_TEST_CASE(test_past) {
   };
 
   for(auto p : kv)
-    BOOST_CHECK_EQUAL(KeyGenerator{p.first}(), p.second);
+    BOOST_CHECK_EQUAL(TM602X::generateKey(p.first), p.second);
 }
 
 BOOST_AUTO_TEST_CASE(test_future) {
@@ -49,5 +48,5 @@ BOOST_AUTO_TEST_CASE(test_future) {
   };
 
   for(auto p : kv)
-    BOOST_CHECK_EQUAL(KeyGenerator{p.first}(), p.second);
+    BOOST_CHECK_EQUAL(TM602X::generateKey(p.first), p.second);
 }

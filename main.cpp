@@ -17,8 +17,6 @@ using std::endl;
 using std::exception;
 using std::exit;
 
-using TM602X::KeyGenerator;
-
 using boost::gregorian::date;
 using boost::gregorian::day_clock;
 using boost::gregorian::weeks;
@@ -76,9 +74,8 @@ int main(int argc, char* argv[]) {
 
   // generate keys for all given dates
   for(day_iterator it{start}; it <= end; ++it) {
-    KeyGenerator g{*it};
 
     // $1 = ISO 8601, $2 = key
-    cout << to_iso_extended_string(*it) << " " << g() << endl;
+    cout << to_iso_extended_string(*it) << " " << TM602X::generateKey() << endl;
   }
 }

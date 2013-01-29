@@ -33,7 +33,16 @@ static const Alphabet<36> alphaTable = {{
   'U', 'V', 'W', 'X', 'Y', 'Z',
 }};
 
-std::string KeyGenerator::operator()() const {
+
+std::string generateKey() {
+  return generateKey(boost::gregorian::day_clock::local_day());
+}
+
+std::string generateKey(boost::gregorian::date date) {
+  return generateKey(date, "MPSJKMDHAI");
+}
+
+std::string generateKey(boost::gregorian::date date, std::string seed) {
   // year           last two digits
   // month          Jan = 1
   // dayOfMonth     -
