@@ -76,6 +76,6 @@ int main(int argc, char* argv[]) {
   for(day_iterator it{start}; it <= end; ++it) {
 
     // $1 = ISO 8601, $2 = key
-    cout << to_iso_extended_string(*it) << " " << TM602X::generateKey() << endl;
+    cout << to_iso_extended_string(*it) << " " << TM602X::generateKey(*it) << endl;
   }
 }
